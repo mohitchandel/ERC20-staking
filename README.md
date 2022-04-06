@@ -40,17 +40,17 @@ The `unStakeToken()` function is used to complete the process of unstaking
 This function calculated price and mint it to the reciepient address.
 
 
-###Usage
+### Usage
 
 Before running any command, make sure to install dependencies: 
 `npm install`
 
-####Compile
+#### Compile
 
 Compile the smart contracts with Hardhat: 
 `npx hardhat compile`
 
-####Test
+#### Test
 
 Run the tests:
 `npx hardhat test`
