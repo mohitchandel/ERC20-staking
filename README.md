@@ -3,7 +3,8 @@
 
 This Project is deployed on the Rinkeby testnet
 
-ERC20 Token (Flayer Token) address -> [0x9930712D3e191D1a0CcaCb7b9AF6bD2CEc8Fdf4F](https://rinkeby.etherscan.io/address/0x9930712D3e191D1a0CcaCb7b9AF6bD2CEc8Fdf4F)
+ERC20 Token (Flayer Token) address: [0x9930712D3e191D1a0CcaCb7b9AF6bD2CEc8Fdf4F](https://rinkeby.etherscan.io/address/0x9930712D3e191D1a0CcaCb7b9AF6bD2CEc8Fdf4F)
+
 Staking contract address: [0xF6153245966B81C42eD6fF49Df5AD9502e7a2ce8](https://rinkeby.etherscan.io/address/0xF6153245966B81C42eD6fF49Df5AD9502e7a2ce8)
 
 ### Usage
