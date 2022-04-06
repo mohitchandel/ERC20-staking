@@ -59,4 +59,8 @@ contract StakeFlayer {
             rewardPercentage) / 100;
         return totalReward;
     }
+
+    function checkStaked(address _owner) public view returns(uint256){
+        return(staked[_owner].tokens);
+    }
 }

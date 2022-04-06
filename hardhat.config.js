@@ -1,8 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
-import walletPrivateKey from "./secret.json";
+
+const secret = require("./secret");
 
 const ALCHEMY_API_KEY = "5zU8WnqAkZC43jLfr4lJHp7nrvgWt0Yq";
-const ROPSTEN_PRIVATE_KEY = walletPrivateKey;
+const RINKEBY_PRIVATE_KEY = secret.walletPrivateKey;
 
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -26,8 +27,8 @@ module.exports = {
   solidity: "0.8.4",
   networks: {
     rinkeby: {
-      url: `https://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts: [`${ROPSTEN_PRIVATE_KEY}`]
+      url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+      accounts: [`${RINKEBY_PRIVATE_KEY}`]
     }
   }
 };
