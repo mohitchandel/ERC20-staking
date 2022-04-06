@@ -11,7 +11,7 @@ functions need to call before stacking
 approve(address spender, uint256 amount)
 ``` 
 
-this function is used to approve contract address to spend on on behalf of user.
+this function is used to approve contract address to spend on behalf of user.
 
 The function takes the following arguments:
 
