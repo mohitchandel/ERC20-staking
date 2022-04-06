@@ -59,4 +59,3 @@ Run the tests:
 
 deploy contract to netowrk: 
 `npx hardhat run --network rinkeby scripts/deploy.js`
-
