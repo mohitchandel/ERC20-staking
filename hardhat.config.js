@@ -1,4 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
+import walletPrivateKey from "./secret.json";
+
+const ALCHEMY_API_KEY = "5zU8WnqAkZC43jLfr4lJHp7nrvgWt0Yq";
+const ROPSTEN_PRIVATE_KEY = walletPrivateKey;
+
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -10,6 +15,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
@@ -18,4 +24,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    rinkeby: {
+      url: `https://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+      accounts: [`${ROPSTEN_PRIVATE_KEY}`]
+    }
+  }
 };
