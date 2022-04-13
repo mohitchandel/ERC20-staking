@@ -46,39 +46,45 @@ describe("ERC20 token staking", function () {
   describe("FlayerToken Staking", function () {
     it("Should be able to stake", async function () {
       // Minting flayer
-      const mintFlayer = await flayer.mint(admin.address, 10000000)
+      const mintFlayer = await flayer.mint(admin.address, ethers.BigNumber.from("100000000000000000000"))
       await mintFlayer.wait()
 
       // Approving token spend
-      const approveFlayer = await flayer.approve(stake.address, 10000000)
+      const approveFlayer = await flayer.approve(stake.address, ethers.BigNumber.from("100000000000000000000"))
       await approveFlayer.wait()
-      expect(await flayer.allowance(admin.address, stake.address)).to.equal(10000000);
+      expect(await flayer.allowance(admin.address, stake.address)).to.equal(ethers.BigNumber.from("100000000000000000000"));
 
       // Stake token
-      const stakeToken = await stake.stakeToken(10000000)
+      const stakeToken = await stake.stakeToken(100)
       await stakeToken.wait()
-      expect(await stake.checkStaked(admin.address)).to.equal(10000000);
+      expect(await stake.checkStaked(admin.address)).to.equal(ethers.BigNumber.from("100000000000000000000"));
     })
 
     it("Should be able to unstake tokens", async function () {
       // Minting flayer
-      const mintFlayer = await flayer.mint(admin.address, 10000000)
+      const mintFlayer = await flayer.mint(admin.address, ethers.BigNumber.from("100000000000000000000"))
       await mintFlayer.wait()
 
       // Approving token spend
-      const approveFlayer = await flayer.approve(stake.address, 10000000)
+      const approveFlayer = await flayer.approve(stake.address, ethers.BigNumber.from("100000000000000000000"))
       await approveFlayer.wait()
-      expect(await flayer.allowance(admin.address, stake.address)).to.equal(10000000);
+      expect(await flayer.allowance(admin.address, stake.address)).to.equal(ethers.BigNumber.from("100000000000000000000"));
 
       // Stake token
-      const stakeToken = await stake.stakeToken(10000000)
+      const stakeToken = await stake.stakeToken(100)
       await stakeToken.wait()
-      expect(await stake.checkStaked(admin.address)).to.equal(10000000);
+      expect(await stake.checkStaked(admin.address)).to.equal(ethers.BigNumber.from("100000000000000000000"));
 
       // unstake token
-      const unstakeToken = await stake.unStakeToken()
-      await stakeToken.wait()
-      expect(await stake.checkStaked(admin.address)).to.equal(0);
+      const stakeData = await stake.staked(admin.address);
+      const daysCount = (stakeData.startTime - (Date.now() / 1000)) / 60 / 60 / 24;
+      if(daysCount >= 30 ){
+        const unstakeToken = await stake.unStakeToken(admin.address)
+        await unstakeToken.wait()
+        expect(await stake.checkStaked(admin.address)).to.equal(0);
+      }else{
+        console.log("Minimum staking time(30 days) not completed")
+      }
     })
   })
 
