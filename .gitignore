@@ -4,6 +4,7 @@ coverage
 coverage.json
 typechain
 secret.js
+artifacts
 
 #Hardhat files
 cache
