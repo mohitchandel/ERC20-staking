@@ -32,7 +32,7 @@ contract StakeFlayer {
             staked[_beneficiary].tokens > 0,
             "You don't have any token staked"
         );
-        uint256 totalDays = (block.timestamp - staked[_beneficiary].startTime) / 60 / 60 / 24;
+        uint256 totalDays = (block.timestamp - staked[_beneficiary].startTime) / 60 * 60 * 24;
         require(totalDays >= 30, "Minimum staking time(30 days) not completed");
         token.mint(address(this), earnedRewards(_beneficiary));
         token.transfer(
@@ -46,7 +46,7 @@ contract StakeFlayer {
     function earnedRewards(address _beneficiary) public view returns (uint256) {
         uint16 rewardPercentage = 2;
         uint256 time = staked[_beneficiary].startTime;
-        uint256 totalDays = (block.timestamp - time) / 60 / 60 / 24;
+        uint256 totalDays = (block.timestamp - time) / 60 * 60 * 24;
         if ( totalDays  >= 30  && totalDays <= 6 * 30 ) rewardPercentage = 5;
         else if (totalDays  >= 6 * 30  && totalDays <= 12 * 30 ) rewardPercentage = 10; 
         else if ( totalDays  >= 12 * 30 ) rewardPercentage = 15;
