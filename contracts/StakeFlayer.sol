@@ -47,9 +47,9 @@ contract StakeFlayer {
         uint16 rewardPercentage = 2;
         uint256 time = staked[_beneficiary].startTime;
         uint256 totalDays = (block.timestamp - time) / 60 * 60 * 24;
-        if ( totalDays  >= 30  && totalDays <= 6 * 30 ) rewardPercentage = 5;
-        else if (totalDays  >= 6 * 30  && totalDays <= 12 * 30 ) rewardPercentage = 10; 
-        else if ( totalDays  >= 12 * 30 ) rewardPercentage = 15;
+        if ( totalDays  >= 30  && totalDays <= 180 ) rewardPercentage = 5;
+        else if (totalDays  >= 180  && totalDays <= 365 ) rewardPercentage = 10; 
+        else if ( totalDays  >= 365 ) rewardPercentage = 15;
         uint256 totalReward = (staked[_beneficiary].tokens * rewardPercentage) / 100;
         return totalReward;
     }
